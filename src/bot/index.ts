@@ -1,8 +1,14 @@
-import { Client } from "discord.js";
+import { config } from "dotenv"
+import BotClient from "./class/bot"
 
+config()
 
-const client: Client = new Client()
+const client = new BotClient(String(process.env.PREFIX))
 
-client.on('ready', async () => {
-    console.log(client.user?.tag)
+client.ready(async () => {
+    console.log('Login on', client.user?.tag)
 })
+
+client.setCommand('./commands')
+
+client.login(String(process.env.TOKEN))
