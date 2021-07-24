@@ -16,11 +16,12 @@ interface IGuild {
     role: string
 }
 
-export const connect = async () => {
-    await Mongoose.connect(String(process.env.DB_URI),  {
-        useNewUrlParser: true,
-        useCreateIndex: true,
-    })
+export const connect = async (): Promise<void> => {
+    if (!Mongoose.connection)
+        await Mongoose.connect(String(process.env.DB_URI),  {
+            useNewUrlParser: true,
+            useCreateIndex: true,
+        })
 }
 
 export const TokenSchema = new Mongoose.Schema<IToken>({
@@ -46,7 +47,7 @@ export const TokenSchema = new Mongoose.Schema<IToken>({
     },
 })
 
-export const TokenModel = Mongoose.model<IToken>('token', TokenSchema)
+export const TokenModel: Mongoose.Model<IToken, {}, {}> = Mongoose.model<IToken>('token', TokenSchema)
 
 export const GuildSchema = new Mongoose.Schema<IGuild>({
     id: {
@@ -59,4 +60,4 @@ export const GuildSchema = new Mongoose.Schema<IGuild>({
     }
 })
 
-export const GuildModel = Mongoose.model<IGuild>('guild', GuildSchema)
+export const GuildModel: Mongoose.Model<IGuild, {}, {}> = Mongoose.model<IGuild>('guild', GuildSchema)
