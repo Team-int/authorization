@@ -3,17 +3,10 @@ import { config } from "dotenv"
 
 config()
 
-interface IToken {
-    user: string
-    guild: string
-    token: string
-    created_time: number
-    exprise_time: number
-}
-
 interface IGuild {
     id: string
     role: string
+    code: string
 }
 
 export const connect = async (): Promise<void> => {
@@ -24,37 +17,16 @@ export const connect = async (): Promise<void> => {
         })
 }
 
-export const TokenSchema = new Mongoose.Schema<IToken>({
-    user: {
-        type: String,
-        required: true,
-    },
-    guild: {
-        type: String,
-        required: true,
-    },
-    token: {
-        type: String,
-        required: true,
-    },
-    created_time: {
-        type: Number,
-        required: true,
-    },
-    exprise_time: {
-        type: Number,
-        required: true,
-    },
-})
-
-export const TokenModel: Mongoose.Model<IToken, {}, {}> = Mongoose.model<IToken>('token', TokenSchema)
-
 export const GuildSchema = new Mongoose.Schema<IGuild>({
     id: {
         type: String,
         required: true,
     },
     role: {
+        type: String,
+        required: true,
+    },
+    code: {
         type: String,
         required: true,
     }
