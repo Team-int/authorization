@@ -8,11 +8,12 @@ const VerifyRouter: Router = {
         fastify.post<{
             Body: {
                 code: string,
-                refresh_token: string
+                refresh_token: string,
+                captcha_token: string
             }
         }>('/', async (req, res) => {
             try {
-                const { code, refresh_token } = req.body
+                const { code, refresh_token, captcha_token } = req.body
 
                 if (!code || !refresh_token)
                     return res.code(401).send({

@@ -17,7 +17,7 @@ const AuthCode: NextPage = () => {
             const { data } = res
             if (!data.success)
                 return setMessage('뭔가 잘못된것 같아요!')
-            localStorage.setItem('guild', data.guild)
+            localStorage.setItem('code', String(code))
             location.href = String(process.env.OAUTH_URL)
         })
     }, [])
