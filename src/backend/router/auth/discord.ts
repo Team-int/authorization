@@ -41,6 +41,7 @@ const DiscordRouter: Router = {
                 })
             }
         })
+        done()
     }
 }
 

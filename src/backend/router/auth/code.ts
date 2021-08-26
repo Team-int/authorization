@@ -32,6 +32,7 @@ const CodeRouter: Router = {
                 })
             }
         })
+        done()
     }
 }
 

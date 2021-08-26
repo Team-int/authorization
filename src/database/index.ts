@@ -1,8 +1,6 @@
 import Mongoose from "mongoose"
 import { config } from "dotenv"
 
-config()
-
 interface IGuild {
     id: string
     role: string
@@ -10,11 +8,11 @@ interface IGuild {
 }
 
 export const connect = async (): Promise<void> => {
-    if (!Mongoose.connection)
-        await Mongoose.connect(String(process.env.DB_URI),  {
-            useNewUrlParser: true,
-            useCreateIndex: true,
-        })
+    await Mongoose.connect(String(process.env.DB_URI),  {
+        useNewUrlParser: true,
+        useCreateIndex: true,
+    })
+    console.log('DB Connected')
 }
 
 export const GuildSchema = new Mongoose.Schema<IGuild>({

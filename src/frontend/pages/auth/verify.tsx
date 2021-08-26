@@ -24,6 +24,13 @@ const verify = (token: string | null, setStatus: Dispatch<SetStateAction<boolean
 const AuthVerify: NextPage = () => {
     const [verifyStatus, setStatus] = useState<boolean>(false)
 
+    useEffect(() => {
+        const code = localStorage.getItem('code')
+        const refresh_token = localStorage.getItem('refresh_token')
+        if (!code || !refresh_token)
+            return alert('무언가 하나가 빠진것 같은 느낌인데요!')
+    }, [])
+
     if (!verifyStatus)
         return (
             <p className="text-center mt-28">
