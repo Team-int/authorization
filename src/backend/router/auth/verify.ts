@@ -98,11 +98,12 @@ const VerifyRouter: Router = {
 
                 const botTargetMember = await botTargetGuild.members.fetch(guildUser.id)
                 botTargetMember.roles.add(targetRole)
+                Oauth.revokeToken(token.access_token)
 
                 return res.code(200).send({
                     code: 200,
                     success: true,
-                    message: '성공적으로 처리했습니다'
+                    message: 'Verified successfully'
                 })
             } catch (e) {
                 return res.code(400).send({

@@ -22,7 +22,7 @@ const CodeRouter: Router = {
                 
                 return {
                     code: 200,
-                    guild: guild.id
+                    success: true,
                 }
 
             } catch (e) {

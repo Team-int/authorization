@@ -32,6 +32,7 @@ const DiscordRouter: Router = {
                     
                 return {
                     code: 200,
+                    success: true,
                     refresh_token: btoa(token.refresh_token)
                 }
             } catch (e) {
