@@ -11,7 +11,7 @@
     "btoa": "^1.2.1",
     "discord.js": "^13.1.0",
     "dotenv": "^10.0.0",
-    "fastify": "^3.19.2",
+    "fastify": "^3.29.4",
     "fastify-cors": "^6.0.2",
     "oauth-discord": "^1.4.5",
     "uuid": "^8.3.2"
